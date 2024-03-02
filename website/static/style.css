@@ -1,0 +1,7 @@
+.custom-dark {
+    color: #000000 !important; /* Dark color for text, ensuring override with !important */
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px
+}
