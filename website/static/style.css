@@ -5,3 +5,23 @@
     font-style: normal;
     font-size: 20px
 }
+
+.filebox {
+    border: 2px solid #000; /* Adds a black border */
+    background-color: whitesmoke; /* Sets the background color to white */
+    border-color: gainsboro;
+    padding: 20px; /* Adds some padding inside the box */
+    margin: 400px auto; /* Centers the box on the page with some margin */
+    width: 40%; /* Sets the width of the box */
+    height: 500px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); /* OPTIONAL: Adds a subtle shadow for a modern look */
+    border-radius: 10px;
+}
+
+body {
+  background-image: url('background.jpg');
+  background-size: cover; /* Resize the background image to cover the entire container */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  height: 100vh; /* Optional: Set the minimum height to 100% of the viewport height */
+}
