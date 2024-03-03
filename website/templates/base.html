@@ -20,18 +20,20 @@
         <title>{% block title %}Home{% endblock %}</title>
     </head>
     <body>
-    <nav class = "navbar navbar-expand-lg navbar-dark bg-light">
-        <img src="{{ url_for('static', filename='quicksharelogo1.png') }}" alt="QuickShare logostyle=" style="width: 70px; height: auto;">
+    <nav class = "navbar navbar-expand-lg navbar-light bg-light">
+        <a href="/">
+        <img src="{{ url_for('static', filename='quicksharelogo1.png') }}" alt="QuickShare Logo" style="width: 70px; height: auto;">
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbar">
             <div class="navbar-nav">
-                <a class="nav-item nav-link custom-dark" id="home" href="/">Upload</a>
-                <a class="nav-item nav-link custom-dark" id="My Files" href="/myfiles">My Files</a>
-                <a class="nav-item nav-link custom-dark" id="login" href="/login">Login</a>
-                <a class="nav-item nav-link custom-dark" id="signUp" href="/sign-up">Sign Up</a>
-                <a class="nav-item nav-link custom-dark" id="logout" href="/logout">Logout</a>
+                <a class="nav-item nav-link base-text-style" id="home" href="/">Upload</a>
+                <a class="nav-item nav-link base-text-style" id="My Files" href="/myfiles">My Files</a>
+                <a class="nav-item nav-link base-text-style" id="login" href="/login">Login</a>
+                <a class="nav-item nav-link base-text-style" id="signUp" href="/sign-up">Sign Up</a>
+                <a class="nav-item nav-link base-text-style" id="logout" href="/logout">Logout</a>
             </div>
         </div>
     </nav>
