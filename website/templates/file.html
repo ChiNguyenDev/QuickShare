@@ -1,7 +1,16 @@
-{% extends "base.html" %} {% block title %}My Files{% endblock %}
+{% extends "base.html" %}
+{% block title %}My Files{% endblock %}
 
 {% block content %}
-<h1>Test</h1>
-
-
+<br />
+<h1 align="center">Hey {{ current_user.first_name }}! Here are your files:</h1>
+<ul class="list-group list-group-flush" id="files">
+    {% for file in current_user.files %}
+    <li class="list-group-item">
+        {{ file.name }}
+    </li>
+   {% else %}
+        <li class="list-group-item">No files found.</li>
+    {% endfor %}
+</ul>
 {% endblock %}
