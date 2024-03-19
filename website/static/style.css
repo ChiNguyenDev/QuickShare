@@ -19,7 +19,7 @@
     background-color: whitesmoke; /* Sets the background color to white */
     border-color: gainsboro;
     padding: 20px; /* Adds some padding inside the box */
-    margin: 400px auto; /* Centers the box on the page with some margin */
+    margin: 100px auto; /* Centers the box on the page with some margin */
     width: 40%; /* Sets the width of the box */
     height: 500px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* OPTIONAL: Adds a subtle shadow for a modern look */
@@ -35,13 +35,22 @@
       margin-bottom: 20px; /* Adjust the value as needed */
   }
 
+html {
+  height: 100%; /* This makes sure your html tag spans the entire height of the content */
+}
+
 body {
   background-image: url('background.jpg');
-  background-size: cover; /* Resize the background image to cover the entire container */
-  background-position: center; /* Center the background image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  height: 100vh; /* Optional: Set the minimum height to 100% of the viewport height */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* Fixes the background */
+  min-height: 100vh;
+  margin: 0;
 }
+
+
+
 
 
 .gradient-custom-3 {
