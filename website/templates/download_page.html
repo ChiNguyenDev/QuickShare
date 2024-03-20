@@ -1,0 +1,12 @@
+
+{% extends "base.html" %} {% block title %}Download Page{% endblock %}
+
+{% block content %}
+<br/>
+<div class="filebox">
+<h1>{{ file_name }}</h1>
+<br/>
+<a href="{{ download_url }}" class="btn btn-primary btn-dark">Download</a>
+
+</div>
+{% endblock %}

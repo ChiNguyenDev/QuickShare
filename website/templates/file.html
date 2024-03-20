@@ -7,7 +7,7 @@
 <ul class="list-group list-group-flush" id="files">
     {% for file in current_user.files %}
     <li class="list-group-item">
-        {{ file.name }}
+        <a href="{{ url_for('views.download_page', unique_id=file.unique_id) }}">{{ file.name }}</a>
     </li>
    {% else %}
         <li class="list-group-item">No files found.</li>

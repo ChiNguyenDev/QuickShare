@@ -6,7 +6,8 @@ from sqlalchemy.sql import func
 class File(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100))
-    link = db.Column(db.String(100))
+    unique_id = db.Column(db.String(100), unique=True)
+    blob_name = db.Column(db.String(255), unique=True, nullable=False)
     date = db.Column(db.DateTime(timezone=True), default=func.now())
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
