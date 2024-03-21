@@ -15,28 +15,28 @@
 
 
 .filebox {
-    border: 2px solid #000; /* Adds a black border */
-    background-color: whitesmoke; /* Sets the background color to white */
+    border: 2px solid #000;
+    background-color: whitesmoke;
     border-color: gainsboro;
-    padding: 20px; /* Adds some padding inside the box */
-    margin: 100px auto; /* Centers the box on the page with some margin */
-    width: 40%; /* Sets the width of the box */
+    padding: 20px;
+    margin: 100px auto;
+    width: 40%;
     height: 500px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* OPTIONAL: Adds a subtle shadow for a modern look */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     text-align: center;
     display: flex;
-    flex-direction: column; /* Stack children vertically */
-    justify-content: center; /* Center vertically in the flex container */
-    align-items: center; /* Center horizontally in the flex container */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
   .filebox form input[type="file"] {
-      margin-bottom: 20px; /* Adjust the value as needed */
+      margin-bottom: 20px;
   }
 
 html {
-  height: 100%; /* This makes sure your html tag spans the entire height of the content */
+  height: 100%;
 }
 
 body {
@@ -44,7 +44,7 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed; /* Fixes the background */
+  background-attachment: fixed;
   min-height: 100vh;
   margin: 0;
 }
@@ -54,22 +54,16 @@ body {
 
 
 .gradient-custom-3 {
-/* fallback for old browsers */
 background: #84fab0;
 
-/* Chrome 10-25, Safari 5.1-6 */
 background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5));
 
-/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 background: linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5))
 }
 .gradient-custom-4 {
-/* fallback for old browsers */
 background: #84fab0;
 
-/* Chrome 10-25, Safari 5.1-6 */
 background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
 
-/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1))
 }

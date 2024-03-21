@@ -4,9 +4,13 @@
 {% block content %}
 <br/>
 <div class="filebox">
-<h1>{{ file_name }}</h1>
-<br/>
+<img src="{{ url_for('static', filename='quicksharelogo1.png') }}" alt="QuickShare Logo" style="width: 160px; height: auto; margin-bottom: 20px;">
+<br />
+<br />
+<h1>"{{ file_name }}"</h1>
+<br/><br/><br/>
+<h4>Download the file:</h4>
 <a href="{{ download_url }}" class="btn btn-primary btn-dark">Download</a>
-
+<p>filesize: {{ size }}</p>
 </div>
 {% endblock %}

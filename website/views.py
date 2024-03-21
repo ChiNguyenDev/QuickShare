@@ -52,8 +52,8 @@ def upload_file():
     if request.method == "POST":
         file = request.files.get("file")
         if file:
-            if request.content_length < 100 * 1024 * 1024:  # 100MB limit
-                flash("File successfully uploaded", category="success")
+            size = request.content_length
+            if size < 100 * 1024 * 1024:  # 100MB limit
                 # generate unique blob name
 
                 unique_id = uuid.uuid4()
@@ -63,7 +63,7 @@ def upload_file():
                 blob_client.upload_blob(file)
 
                 new_file = File(name=file.filename, unique_id=str(unique_id),
-                                blob_name=blob_name)
+                                blob_name=blob_name, size=size)
 
                 if current_user.is_authenticated:
                     new_file.user_id = current_user.id
@@ -71,7 +71,7 @@ def upload_file():
                 db.session.add(new_file)
                 db.session.commit()
 
-                flash('File successfully uploaded')
+                flash("File successfully uploaded", category="success")
                 return redirect(url_for('views.download_page', unique_id=str(unique_id)))
             else:
                 flash("File is too large", category="error")
@@ -104,7 +104,17 @@ def download_page(unique_id):
     if not file_entry:
         abort(404, description="File not found")
 
-    return render_template('download_page.html', file_name=file_entry.name,
+    # Format the file size
+    formatted_size = format_size(file_entry.size)
+
+    return render_template('download_page.html', file_name=file_entry.name, size=formatted_size,
                            download_url=url_for('views.download_file', unique_id=unique_id))
 
+
+def format_size(size):
+    for unit in ['bytes', 'KB', 'MB', 'GB', 'TB']:
+        if size < 1024.0:
+            return f"{size:.2f} {unit}"
+        size /= 1024.0
+    return f"{size:.2f} PB"
 
