@@ -36,12 +36,7 @@ container_client = blob_service_client.get_container_client(CONTAINER_NAME)  # c
 
 @views.route('/', methods=['GET', 'POST'])
 def home():
-    # Assuming you have a way to identify the current user, fetch their files
-    user_files = None
-    if current_user.is_authenticated:
-        user_files = File.query.filter_by(user_id=current_user.id).all()
-
-    return render_template("home.html", user=current_user, files=user_files)
+    return render_template("home.html")
 
 
 
@@ -52,7 +47,6 @@ def myFiles():
 
 
 @views.route('/upload', methods=['POST'])
-@login_required
 def upload_file():
     # if POST: retrieve file
     if request.method == "POST":
@@ -64,12 +58,16 @@ def upload_file():
 
                 unique_id = uuid.uuid4()
                 print(unique_id)
-                blob_name = f"uploads/{current_user.id}/{unique_id}-{file.filename}"
+                blob_name = f"uploads/{unique_id}-{file.filename}"
                 blob_client = blob_service_client.get_blob_client(container=CONTAINER_NAME, blob=blob_name)
                 blob_client.upload_blob(file)
 
-                new_file = File(user_id=current_user.id, name=file.filename, unique_id=str(unique_id),
+                new_file = File(name=file.filename, unique_id=str(unique_id),
                                 blob_name=blob_name)
+
+                if current_user.is_authenticated:
+                    new_file.user_id = current_user.id
+
                 db.session.add(new_file)
                 db.session.commit()
 
