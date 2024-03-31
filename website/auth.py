@@ -7,17 +7,21 @@ from flask_login import login_user, logout_user, login_required, current_user
 auth = Blueprint('auth', __name__)
 
 
+# Route for user login
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         email = request.form.get('email')
         password = request.form.get('password')
 
+        # Query the database for the user with the provided email
         user = User.query.filter_by(email=email).first()
 
         if user:
+            # Check if the password provided matches the hashed password stored in the database
             if check_password_hash(user.password, password):
                 flash('Logged in successfully!', 'success')
+                # Log in the user and redirect to the home page
                 login_user(user, remember=True)
                 return redirect(url_for('views.home'))
             else:
@@ -27,6 +31,7 @@ def login():
     return render_template("login.html", user=current_user)
 
 
+# Route for user logout
 @auth.route('/logout')
 @login_required
 def logout():
@@ -34,6 +39,7 @@ def logout():
     return redirect(url_for('auth.login'))
 
 
+# Route for user sign-up
 @auth.route('/sign-up', methods=['GET', 'POST'])
 def sign_up():
     if request.method == 'POST':
@@ -42,6 +48,7 @@ def sign_up():
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
 
+        # Check if a user with the provided email already exists
         user = User.query.filter_by(email=email).first()
         if user:
             flash('Email already exists', category='error')
@@ -54,9 +61,11 @@ def sign_up():
         elif len(password1) < 7:
             flash('Password must be at least 7 characters', category='error')
         else:
+            # create a new user account
             new_user = User(email=email, first_name=first_name, password=generate_password_hash(password1, method='pbkdf2:sha256'))
             db.session.add(new_user)
             db.session.commit()
+            # login with the new user and redirect to the home page
             login_user(new_user, remember=True)
             flash('User successfully created', category='success')
             return redirect(url_for('views.home'))

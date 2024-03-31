@@ -1,7 +1,3 @@
-from dotenv import load_dotenv
-# load env variables needed for Azure Vault
-load_dotenv()
-
 from flask import Blueprint, render_template, request, flash, redirect, url_for, send_file, abort
 from flask_login import login_required, current_user
 from azure.storage.blob import BlobServiceClient
@@ -12,6 +8,9 @@ import os
 from azure.identity import ClientSecretCredential
 from azure.keyvault.secrets import SecretClient
 import io
+from dotenv import load_dotenv
+# load env variables needed for Azure Vault
+load_dotenv()
 
 
 # authenticate against azure services for access
