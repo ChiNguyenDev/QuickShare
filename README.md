@@ -2,6 +2,13 @@
 
 QuickShare is a Flask-based file-sharing website that allows users to easily upload and share files.
 
+**Prerequisites**:
+
+- An Azure account with permissions to create resources.
+- Docker installed on your machine.
+- Basic familiarity with Azure services such as Azure Blob Storage and Key Vault.
+
+    
 ## Getting Started
 
 Follow these steps to set up and run QuickShare:
